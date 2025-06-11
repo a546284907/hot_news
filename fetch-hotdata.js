@@ -3,7 +3,7 @@ const fs = require('fs');
 
 async function fetchData() {
   try {
-    const response = await axios.get('https://github.moeyy.xyz/https://github.com/cxyfreedom/website-hot-hub/raw/refs/heads/main/README.md');
+    const response = await axios.get('https://github.com/cxyfreedom/website-hot-hub/raw/refs/heads/main/README.md');
     const content = response.data;
 
     // Regular expression to match sections
