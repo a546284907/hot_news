@@ -33,7 +33,7 @@ async function fetchData() {
     fs.writeFileSync('data.json', JSON.stringify(result, null, 2));
     console.log('Data saved to data.json');
   } catch (error) {
-    console.error('Error fetching the document:', error);
+    console.error('请求失败:','Error fetching the document:', error);
   }
 }
 
