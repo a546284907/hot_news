@@ -1,0 +1,12 @@
+{
+  "name": "data-fetcher",
+  "version": "1.0.0",
+  "description": "A script to fetch and clean data from a remote Markdown file",
+  "main": "fetch-hotdata.js",
+  "scripts": {
+    "start": "node fetch-hotdata.js"
+  },
+  "dependencies": {
+    "axios": "^1.5.1"
+  }
+}
