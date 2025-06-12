@@ -18,25 +18,20 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20' # 升级到 Node.js 20
+          node-version: '20'
 
       - name: Install dependencies
-        run: npm install
+        run: npm install axios
 
       - name: Run script
-        run: npm start
+        run: node index.js  # 假设脚本文件名为 index.js
 
       - name: Commit changes
         run: |
           git config --local user.name "GitHub Action"
           git config --local user.email "action@github.com"
-          git diff --exit-code -- data.json
-          if [ $? -eq 0 ]; then
-            echo "无更改，跳过提交"
-            exit 0
-          fi
           git add data.json
-          git commit -m "每小时更新数据"
+          git commit -m "自动更新数据" || echo "无更改，跳过提交"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
