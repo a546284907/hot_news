@@ -2,7 +2,7 @@ name: Update Data
 
 on:
   schedule:
-    - cron: '0 * * * *' # 每小时执行一次
+    - cron: '0 * * * *' # 每小时执行一次 (UTC 时间)
   workflow_dispatch:    # 允许手动触发
 
 jobs:
@@ -15,16 +15,25 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up fetch-hotdata.js
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm install axios
+        run: |
+          npm install axios
+          # 如果有其他依赖项，请在此处添加，例如：
+          # npm install <other-packages>
 
       - name: Run script
-        run: node index.js  # 假设脚本文件名为 index.js
+        run: |
+          node fetch-hotdata.js
+          # 检查 data.json 是否生成
+          if [ ! -f "data.json" ]; then
+            echo "Error: data.json 未生成"
+            exit 1
+          fi
 
       - name: Commit changes
         run: |
