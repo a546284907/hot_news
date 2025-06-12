@@ -28,7 +28,7 @@ async function fetchData() {
       }
     }
 
-    console.log(JSON.stringify(result, null, 2));
+    console.log('{"status":200,"data":'+JSON.stringify(result, null, 2)+'}');
   } catch (error) {
     console.error('Error fetching the document:', error);
   }
