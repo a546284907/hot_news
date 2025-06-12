@@ -28,7 +28,7 @@ jobs:
 
       - name: Run script
         run: |
-          node fetch-hotdata.js
+          node fetch-hotdata.js > data.json
           # 检查 data.json 是否生成
           if [ ! -f "data.json" ]; then
             echo "Error: data.json 未生成"
