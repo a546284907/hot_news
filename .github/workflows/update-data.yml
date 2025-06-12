@@ -37,16 +37,11 @@ jobs:
           # 输出文件内容（调试）
           cat data.json
 
-      - name: Debug file status
-        run: |
-          git status
-          ls -la
-
       - name: Commit changes
         run: |
           git config --local user.name "GitHub Action"
           git config --local user.email "action@github.com"
-          git add .  # 添加所有更改
+          git add package.json data.json  # 明确添加需要提交的文件
           if git status --porcelain | grep -q "."; then
             git commit -m "自动更新数据"
             git push
